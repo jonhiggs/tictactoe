@@ -13,25 +13,28 @@ sys.path.append(
         )
 
 
+#from time import sleep
+#import copy
+
 from game import *
 
 
-def print_example_board():
-    print "To play, please enter the number of the field."
-    print "See the illustration below"
-    print '''
-   |   |
- 1 | 2 | 3
-   |   |
------------
-   |   |
- 4 | 5 | 6
-   |   |
------------
-   |   |
- 7 | 8 | 9
-   |   |
-'''
+#def print_example_board():
+#    print "To play, please enter the number of the field."
+#    print "See the illustration below"
+#    print '''
+#   |   |
+# 1 | 2 | 3
+#   |   |
+#-----------
+#   |   |
+# 4 | 5 | 6
+#   |   |
+#-----------
+#   |   |
+# 7 | 8 | 9
+#   |   |
+#'''
 
 # Main part of game
 while True:
