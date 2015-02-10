@@ -2,9 +2,16 @@
 
 # Inspired by "Invent Your Own Computer Games with Python
 # 2nd Edition" by Al Sweigart
+#
 
-from time import sleep
-import copy
+import sys
+import os
+sys.path.append(
+        os.path.realpath(
+            os.path.dirname(__file__) + '/../lib/'
+            )
+        )
+
 
 from game import *
 
