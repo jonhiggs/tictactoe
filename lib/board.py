@@ -2,29 +2,18 @@ class Board(object):
     def __init__(self,rows=3, columns=3):
         self._moves = {}
 
-    @property
     def position_available(self, position):
-        positions = Game.players[0] | Game.players[1]
-        if (self._postions & (1 << position) ) != 0:
-            return False
-        else:
-            return True
+        # integer will be odd if the least significate bit is set.
+        position = self.positions_taken() << position
+        return position % 2 == 0
 
     def print_board(self):
         return "this should be a board"
 
     def positions_taken(self):
         p = 0
-        for key in self._moves:
-            p |= self.str2bin(self._moves[key])
-
+        for key in self._moves: p |= self.str2bin(self._moves[key])
         return p
-
-    #def position_vacant(self, position):
-    #    for key in self._moves:
-    #        if self._moves[key] |= ( 0 << position) != 0:
-    #            return False
-    #    return True
 
     def player_positions(self, token):
         return self._moves.get(token, default=000)
@@ -42,10 +31,10 @@ class Board(object):
 
         return binary
 
-
     def move(self, token, position):
         self._moves[token] = "770"
         self._moves['d'] =   "005"
+        print "position available %s" % self.position_available(0)
         return self.positions_taken()
 
 
