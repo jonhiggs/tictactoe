@@ -1,3 +1,6 @@
+import pdb
+from mask import Mask
+
 class Board(object):
     def __init__(self,rows=3, columns=3):
         self._moves = { "blah": "someting"}
@@ -7,15 +10,27 @@ class Board(object):
         return self._moves["blah"]
 
     def display(self, players):
+        board = [
+            [ None, None, None ],
+            [ None, None, None ],
+            [ None, None, None ],
+        ]
         for player in players:
-            print player.moves
+            moves = player.moves.to_list
+            for i in range(0,len(moves)):
+                if moves[i] == '0': continue
+                column = i % 3
+                row = i / 3
+                board[row][column] = player.token
+
+        print board
 
     def mask(self, players):
         # high bits are taken squares
-        mask = 0
+        m = 0
         for player in players:
-            mask |= player.moves
-        return mask
+            m |= player.moves.to_int
+        return Mask(m)
 
 
     #@property

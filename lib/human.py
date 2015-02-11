@@ -8,5 +8,5 @@ class Human(Player):
         super(Player, self).__init__()
 
     def move(self, board_mask):
-        position = int(raw_input("Where do you want to move"))
+        position = int(raw_input("Where do you want to move? "))
         self.move_to(position, board_mask)

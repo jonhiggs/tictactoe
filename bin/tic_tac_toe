@@ -10,7 +10,6 @@ sys.path.append(
 
 
 from game import *
-import human
 from random import shuffle
 
 print "\nWelcome to Tic Tac Toe! \n"
@@ -22,16 +21,15 @@ board = Board(3,3)
 players = []
 for player in range(0,1):
     players.append(Human(tokens.pop()))
-    players.append(AI(tokens.pop()))
+    #players.append(AI(tokens.pop()))
 
 game = Game(board, players)
 
 for x in range(0, 10):
-    #game.board
     player = game.next_player
     print player.token
-    print bin(player.moves)
     game.move(player)
+    game.board
 
 
 #player = game.next_player()
