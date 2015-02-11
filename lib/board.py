@@ -2,11 +2,6 @@ class Board(object):
     def __init__(self,rows=3, columns=3):
         self._moves = {}
 
-    def position_available(self, position):
-        # integer will be odd if the least significate bit is set.
-        position = self.positions_taken() << position
-        return position % 2 == 0
-
     def print_board(self):
         return "this should be a board"
 
@@ -30,6 +25,13 @@ class Board(object):
             binary |= int(value)
 
         return binary
+
+
+    def position_available(self, position):
+        # integer will be odd if the least significate bit is set.
+        position = self.positions_taken() << position
+        return position % 2 == 0
+
 
     def move(self, token, position):
         self._moves[token] = "770"
