@@ -14,15 +14,14 @@ class Player(object):
 
     def move(self, position, board_mask):
         if self.position_vacant(position, board_mask):
-            try:
-                print "taking position %s" % position
-            except:
-                print "postion %s is taken" % position
-                return False
+            print "taking position %s" % position
+        else:
+            print "postion %s is taken" % position
+            return False
 
 
     def position_vacant(self, position, board_mask):
-        not bool(self.position_state)
+        return not bool(self.position_state(position, board_mask))
 
 
     def position_state(self, position, board_mask):
@@ -30,9 +29,9 @@ class Player(object):
         # mine: return 1
         # used: return 2
 
-        if ( mask2int(self._moves) << position ) % 2:
+        if ( self.mask2int(self._moves) << position ) % 2 != 0:
             return 1
-        elif ( mask2int(board_mask) << position ) % 2:
+        elif ( self.mask2int(board_mask) << position ) % 2 != 0:
             return 3
         else:
             return 0
@@ -41,9 +40,8 @@ class Player(object):
     def mask2int(self, mask):
         # take a mask like 124 and convertes it into an integer for performing
         # bitwise operations.
-        values = list(str(mask))
-        binary = 0
-        for value in mask:
-            int <<= 3
-            int |= int(value)
-        return int
+        i = 0
+        for value in list(str(mask)):
+            i <<= 3
+            i |= int(value)
+        return i
