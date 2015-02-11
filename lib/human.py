@@ -10,11 +10,3 @@ class Human(game.Game):
     @property
     def token(self):
         return self._token
-
-    @token.setter
-    def token(self, value):
-        # token could be anything
-        value = value.upper()
-        if value == "X" or value == "O":
-            self._player1_token = value
-

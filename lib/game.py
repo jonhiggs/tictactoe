@@ -9,7 +9,7 @@ class Game(object):
         rows = 3
         columns = 3
 
-        self._moves = []
+        self._tokens = []
 
         #for player in range(0,players):
         #    human = raw_input('Player %s, Are you human? (y/n): ' % (player+1))
@@ -19,8 +19,14 @@ class Game(object):
         #self._board = Board(players, rows, columns)
 
     def add_player(self, player):
-        self._players.append(player)
-        shuffle(self._players)
+        if player.token not in self._tokens:
+            try:
+                self._tokens.append(player.token)
+                self._players.append(player)
+                shuffle(self._players)
+            except:
+                print "That token has already been taken"
+
 
     @property
     def players(self):

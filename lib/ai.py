@@ -1,12 +1,17 @@
 import game
+from random import shuffle
 
 class AI(game.Game):
 
     def __init__(self):
         # create a list like this ' ' * 9
         self._think_time = 0.1
-        self._token = None
+        self._token = shuffle([ 'O', 'X' ]).pop()
         self._moves = '0b000000000'
+
+    @property
+    def token(self):
+        return self._token
 
 #    def move(board, letter):
 #        if letter == 'X':
