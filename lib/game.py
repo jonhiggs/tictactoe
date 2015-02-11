@@ -1,32 +1,29 @@
 from random import randint, shuffle
 
 from board import *
+from human import *
+from ai import *
 
 class Game(object):
-
-    def __init__(self):
+    def __init__(self, board):
+        self._board = board
         self._players = []
-        rows = 3
-        columns = 3
-
-        self._tokens = []
-
-        #for player in range(0,players):
-        #    human = raw_input('Player %s, Are you human? (y/n): ' % (player+1))
-        #    if human in ['y']: self._players.append(super(Human, self))
-        #    else: self._players[player] = AI()
-
+        self._tokens = [ 'O', 'X', '1', '3' ]
+        shuffle(self._tokens)
         #self._board = Board(players, rows, columns)
 
-    def add_player(self, player):
-        if player.token not in self._tokens:
-            try:
-                self._tokens.append(player.token)
-                self._players.append(player)
-                shuffle(self._players)
-            except:
-                print "That token has already been taken"
+    def add_player(self, style="human"):
+        if style == "human":
+            player = Human
+        else:
+            player = AI
 
+        player.token = self._tokens.pop()
+        shuffle(self._players)
+        self._players.append(player)
+
+    def add_board(self, board):
+        self._board = board
 
     @property
     def players(self):

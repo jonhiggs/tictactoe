@@ -1,7 +1,6 @@
-import game
 from random import shuffle
 
-class AI(game.Game):
+class AI(object):
 
     def __init__(self):
         # create a list like this ' ' * 9

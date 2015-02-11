@@ -38,27 +38,15 @@ from random import shuffle
 # Main part of game
 # Do the setup - part of every new game
 print "\nWelcome to Tic Tac Toe! \n"
-game = Game()
+board = Board(3,3)
+game = Game(board)
 
-tokens = [ 'O', 'X', '1', '3' ]
-shuffle(tokens)
-for player in human.Human, ai.AI:
-    player.token = tokens.pop()
-    game.add_player(player)
+game.add_player("human")
+game.add_player("ai")
 
 while not game.won:
     player = game.next_player
-    print player.__name__
-    print "%s" % player.token
-
-
-for player in range(0,game.players):
-    print player
-    human = raw_input('Player %s, Are you human? (y/n): ' % (player+1))
-    #if human in ['y']: self._players.append(super(Human, self))
-    #else: self._players[player] = AI()
-
-
+    print "It is %s's turn" % player.token
 
     #while True:
     #    board.player_token = raw_input('Do you want to play "X" or "O"?: ')

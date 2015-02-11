@@ -1,6 +1,4 @@
-import game
-
-class Human(game.Game):
+class Human(object):
 
     def __init__(self):
         # create a list like this ' ' * 9
@@ -10,3 +8,6 @@ class Human(game.Game):
     @property
     def token(self):
         return self._token
+
+    def players(self):
+        print super(Game, self)._players
