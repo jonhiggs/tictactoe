@@ -23,6 +23,7 @@ class Game(object):
 
     def move(self, position):
         token = self.next_player.token
+        print "vacant %s" % True
         print "moving %s" % token
         return self._board.move(token,position)
 

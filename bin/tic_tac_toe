@@ -44,7 +44,7 @@ game.add_player("human")
 game.add_player("ai")
 
 print game.board
-print game.move(2)
+print bin(game.move(2))
 
 #while not game.won:
 #    player = game.next_player

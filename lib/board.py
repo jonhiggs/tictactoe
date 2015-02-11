@@ -13,15 +13,40 @@ class Board(object):
     def print_board(self):
         return "this should be a board"
 
+    def positions_taken(self):
+        p = 0
+        for key in self._moves:
+            p |= self.str2bin(self._moves[key])
+
+        return p
+
+    #def position_vacant(self, position):
+    #    for key in self._moves:
+    #        if self._moves[key] |= ( 0 << position) != 0:
+    #            return False
+    #    return True
+
+    def player_positions(self, token):
+        return self._moves.get(token, default=000)
+        #if token in self._moves.keys():
+        #    return self._moves[token]
+        #else:
+        #    return 000
+
+    def str2bin(self, value):
+        values = list(str(value))
+        binary = 0
+        for value in values:
+            binary <<= 3
+            binary |= int(value)
+
+        return binary
+
+
     def move(self, token, position):
-        if token in self._moves.keys():
-            moves = self._moves[token]
-        else:
-            moves = 000
-
-        return moves;
-
-
+        self._moves[token] = "770"
+        self._moves['d'] =   "005"
+        return self.positions_taken()
 
 
 #    def make_move(self, move, letter):
