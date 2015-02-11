@@ -1,14 +1,20 @@
-class AI(object):
+import game
 
-    computer_thinking = 0.1
+class AI(game.Game):
 
-    def move(board, letter):
-        if letter == 'X':
-            p_letter = 'O'
-        else:
-            p_letter = 'X'
-        return win_move(board, letter) or block_move(board, p_letter) or move_corner(board) or move_center(board) or move_side(board)
+    def __init__(self):
+        # create a list like this ' ' * 9
+        self._think_time = 0.1
+        self._token = None
+        self._moves = '0b000000000'
 
+#    def move(board, letter):
+#        if letter == 'X':
+#            p_letter = 'O'
+#        else:
+#            p_letter = 'X'
+#        return win_move(board, letter) or block_move(board, p_letter) or move_corner(board) or move_center(board) or move_side(board)
+#
 ## 1. Check if computer can make winning move
 #def win_move(board, letter):
 #    print "win move"

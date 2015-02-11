@@ -1,34 +1,37 @@
 from random import randint, shuffle
 
-from ai import *
-from human import *
 from board import *
 
 class Game(object):
 
     def __init__(self):
-        players = 2
+        self._players = []
         rows = 3
         columns = 3
 
-        self._players = []
-
         self._moves = []
-        for player in range(0,players):
-            human = raw_input('Player %s, Are you human? (y/n): ' % (player+1))
-            if human in ['y']: self._players.append(Human())
-            else: self._players[player] = AI()
 
-        self._board = Board(players, rows, columns)
+        #for player in range(0,players):
+        #    human = raw_input('Player %s, Are you human? (y/n): ' % (player+1))
+        #    if human in ['y']: self._players.append(super(Human, self))
+        #    else: self._players[player] = AI()
+
+        #self._board = Board(players, rows, columns)
+
+    def add_player(self, player):
+        self._players.append(player)
         shuffle(self._players)
 
+    @property
+    def players(self):
+        return len(self._players)
 
     @property
     def next_player(self):
-        # should pop and push
-        if self._next_player == self._players:
-            self._next_player = 0
-        else:
-            self._next_player += 1
+        player = self._players.pop(0)
+        self._players.append(player)
+        return player
 
-        return self._next_player
+    @property
+    def won(self):
+        return False

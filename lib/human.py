@@ -1,4 +1,6 @@
-class Human(object):
+import game
+
+class Human(game.Game):
 
     def __init__(self):
         # create a list like this ' ' * 9

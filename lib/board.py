@@ -14,7 +14,6 @@ class Board(object):
             return True
 
 
-
     def print_board(self):
         # Make this function shorter
         print  '''

@@ -13,6 +13,8 @@ sys.path.append(
 #import copy
 
 from game import *
+import human
+import ai
 
 
 #def print_example_board():
@@ -33,10 +35,25 @@ from game import *
 #'''
 
 # Main part of game
-while True:
-    # Do the setup - part of every new game
-    print "\nWelcome to Tic Tac Toe! \n"
-    game = Game()
+# Do the setup - part of every new game
+print "\nWelcome to Tic Tac Toe! \n"
+game = Game()
+
+game.add_player(human.Human)
+game.add_player(ai.AI)
+
+while not game.won:
+    player = game.next_player
+    print player.__name__
+
+
+for player in range(0,game.players):
+    print player
+    human = raw_input('Player %s, Are you human? (y/n): ' % (player+1))
+    #if human in ['y']: self._players.append(super(Human, self))
+    #else: self._players[player] = AI()
+
+
 
     #while True:
     #    board.player_token = raw_input('Do you want to play "X" or "O"?: ')
