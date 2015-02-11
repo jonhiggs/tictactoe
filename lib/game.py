@@ -9,7 +9,6 @@ class Game(object):
         self._board = board
         self._players = []
         self._tokens = [ 'O', 'X', '1', '3' ]
-        shuffle(self._tokens)
         #self._board = Board(players, rows, columns)
 
     def add_player(self, style="human"):
@@ -22,8 +21,10 @@ class Game(object):
         shuffle(self._players)
         self._players.append(player)
 
-    def add_board(self, board):
-        self._board = board
+    def move(self, position):
+        token = self.next_player.token
+        print "moving %s" % token
+        return self._board.move(token,position)
 
     @property
     def players(self):
@@ -38,3 +39,7 @@ class Game(object):
     @property
     def won(self):
         return False
+
+    @property
+    def board(self):
+        return self._board.print_board()

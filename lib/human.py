@@ -9,5 +9,4 @@ class Human(object):
     def token(self):
         return self._token
 
-    def players(self):
-        print super(Game, self)._players
+    #def move(self, position):
