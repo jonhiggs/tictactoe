@@ -33,6 +33,10 @@ class Mask(object):
     #def and_with():
     #def xor_with():
 
+    def bit(self,position):
+        position *= -1
+        return self.to_list[:position]
+
 
     def convert_from_bin(self, bin):
         # take '0b111111111' and convert into 777

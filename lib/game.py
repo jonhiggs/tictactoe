@@ -11,7 +11,7 @@ class Game(object):
         self._players = players
 
     def move(self, player):
-        player.move(self._board.mask(self._players))
+        player.move(self._board)
 
     @property
     def players(self):
@@ -30,4 +30,5 @@ class Game(object):
     @property
     def board(self):
         return self._board.display(self._players)
+
 

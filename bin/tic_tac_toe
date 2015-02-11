@@ -3,11 +3,8 @@
 import sys
 import os
 sys.path.append(
-        os.path.realpath(
-            os.path.dirname(__file__) + '/../lib/'
-            )
-        )
-
+    os.path.realpath( os.path.dirname(__file__) + '/../lib/')
+)
 
 from game import *
 from random import shuffle
@@ -25,7 +22,7 @@ for player in range(0,1):
 
 game = Game(board, players)
 
-for x in range(0, 10):
+for i in range(0, 10):
     player = game.next_player
     print player.token
     game.move(player)
@@ -36,71 +33,3 @@ for x in range(0, 10):
 #print game.next_player.moves(player)
 
 #print game.move(2)
-
-
-
-
-
-
-
-
-#while not game.won:
-#    player = game.next_player
-#    print "It is %s's turn" % player.token
-#
-#    print game.board
-
-    #while True:
-    #    board.player_token = raw_input('Do you want to play "X" or "O"?: ')
-    #    if board.player_token: break
-
-    ##player = Player()
-    ##ai = AI
-
-    #print "Player is %s, computer is %s" % (board.player_token, board.ai_token)
-    #print ("\n")
-    #print_example_board()
-    #print ("\n")
-    #print "Computer will randomly decided who will make the first move..."
-    #sleep(computer_thinking)
-
-    #if board.player_turn:
-    #    turn = "Player"
-    #else:
-    #    turn = "AI"
-    #print "%s will make the first move" % turn
-
-    #sleep(computer_thinking)
-    #Draw board & get computer and player feedback until
-    #one player wins or there is a tie
-
-    #while True:
-    #    # check for tie - board is full and no one won
-    #    if new_board.is_full():
-    #        print "It's a tie!"
-    #        break
-    #    else:
-    #        if turn == 'Player':
-    #            print "Players turn: ",
-    #            move = player_move(new_board)
-    #            new_board.make_move(move, player_letter)
-    #            new_board.print_board()
-    #            if new_board.win(player_letter):
-    #                print "Player wins!"
-    #                break
-    #            else:
-    #                turn = 'Computer'
-    #        else:
-    #            print "Computers turn..."
-    #            sleep(computer_thinking)
-    #            move = computer_move(new_board, computer_letter)
-    #            new_board.make_move(move, computer_letter)
-    #            new_board.print_board()
-    #            if new_board.win(computer_letter):
-    #                print "Computer wins!"
-    #                break
-    #            else:
-    #                turn = 'Player'#
-
-    #play_again = raw_input("Do you want to play again?"
-    #                       "(Y)es/(N)o: ").lower().startswith('y')
