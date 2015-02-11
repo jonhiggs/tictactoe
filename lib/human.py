@@ -1,12 +1,9 @@
-class Human(object):
+from player import *
 
-    def __init__(self):
-        # create a list like this ' ' * 9
-        self._token = None
-        self._moves = '0b000000000'
+class Human(Player):
 
-    @property
-    def token(self):
-        return self._token
+    def __init__(self, token):
+        self._token = token
+        self._moves = 0
+        super(Player, self).__init__()
 
-    #def move(self, position):

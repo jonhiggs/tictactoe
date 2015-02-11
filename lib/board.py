@@ -1,46 +1,67 @@
 class Board(object):
     def __init__(self,rows=3, columns=3):
-        self._moves = {}
+        self._moves = { "blah": "someting"}
 
-    def print_board(self):
-        return "this should be a board"
+    @property
+    def moves(self):
+        return self._moves["blah"]
 
-    def positions_taken(self):
-        p = 0
-        for key in self._moves: p |= self.str2bin(self._moves[key])
-        return p
+    def display(self, players):
+        for player in players:
+            print player.moves
 
-    def player_positions(self, token):
-        return self._moves.get(token, default=000)
-        #if token in self._moves.keys():
-        #    return self._moves[token]
-        #else:
-        #    return 000
-
-    def str2bin(self, value):
-        values = list(str(value))
-        binary = 0
-        for value in values:
-            binary <<= 3
-            binary |= int(value)
-
-        return binary
+    def mask(self, players):
+        # high bits are taken squares
+        mask = 0
+        for player in players:
+            mask |= player.moves
+        return mask
 
 
-    def position_available(self, position):
-        # integer will be odd if the least significate bit is set.
-        position = self.positions_taken() << position
-        return position % 2 == 0
+    #@property
+    #def positions_taken(self):
+    #    p = 0
+    #    for key in self._moves: p |= self.str2bin(self._moves[key])
+    #    return p
+
+    #def position_taken(self, position, token="all"):
+    #    if token == "all":
+    #        data = self.positions_taken
+    #    else:
+    #        data = self._moves[token]
+
+    #    # integer will be odd if the least significate bit is set.
+    #    position = self.str2bin(data) << position
+    #    return position % 2 == 0
+
+    #def position_owner(self, position):
+    #    for token in self._moves:
+    #        if self.position_taken(position, token):
+    #            return token
+    #    return None
+
+    #def str2bin(self, value):
+    #    values = list(str(value))
+    #    binary = 0
+    #    for value in values:
+    #        binary <<= 3
+    #        binary |= int(value)
+    #    return binary
+
+    #def move(self, token, position):
+    #    self._moves[token] = "770"
+    #    self._moves['d'] =   "005"
+    #    print "position available %s" % self.position_taken(0)
+    #    print "position owner %s" % self.position_owner(2)
+
+    #    while not self.position_taken(position):
+    #        try:
+    #            return True
+    #        except:
+    #            return False
 
 
-    def move(self, token, position):
-        self._moves[token] = "770"
-        self._moves['d'] =   "005"
-        print "position available %s" % self.position_available(0)
-        return self.positions_taken()
-
-
-#    def make_move(self, move, letter):
+#   # def make_move(self, move, letter):
 #         self.board[move] = letter
 #         return self.board
 #

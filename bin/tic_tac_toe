@@ -9,42 +9,41 @@ sys.path.append(
         )
 
 
-#from time import sleep
-#import copy
-
 from game import *
 import human
-import ai
 from random import shuffle
 
-
-#def print_example_board():
-#    print "To play, please enter the number of the field."
-#    print "See the illustration below"
-#    print '''
-#   |   |
-# 1 | 2 | 3
-#   |   |
-#-----------
-#   |   |
-# 4 | 5 | 6
-#   |   |
-#-----------
-#   |   |
-# 7 | 8 | 9
-#   |   |
-#'''
-
-# Main part of game
-# Do the setup - part of every new game
 print "\nWelcome to Tic Tac Toe! \n"
-game = Game(Board(3,3))
 
-game.add_player("human")
-game.add_player("ai")
+tokens = [ "X", "O" ]
 
-print game.board
-print bin(game.move(2))
+board = Board(3,3)
+
+players = []
+for player in range(0,2):
+    players.append(Human(tokens.pop()))
+
+game = Game(board, players)
+
+for x in range(0, 10):
+    #game.board
+    player = game.next_player
+    print player.token
+    print bin(player.moves)
+    game.move(player, 2)
+
+
+#player = game.next_player()
+#print game.next_player.moves(player)
+
+#print game.move(2)
+
+
+
+
+
+
+
 
 #while not game.won:
 #    player = game.next_player

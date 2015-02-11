@@ -5,27 +5,13 @@ from human import *
 from ai import *
 
 class Game(object):
-    def __init__(self, board):
+    def __init__(self, board, players):
+        shuffle(players)
         self._board = board
-        self._players = []
-        self._tokens = [ 'O', 'X', '1', '3' ]
-        #self._board = Board(players, rows, columns)
+        self._players = players
 
-    def add_player(self, style="human"):
-        if style == "human":
-            player = Human
-        else:
-            player = AI
-
-        player.token = self._tokens.pop()
-        shuffle(self._players)
-        self._players.append(player)
-
-    def move(self, position):
-        token = self.next_player.token
-        print "vacant %s" % True
-        print "moving %s" % token
-        return self._board.move(token,position)
+    def move(self, player, position):
+        player.move(position, self._board.mask(self._players))
 
     @property
     def players(self):
@@ -43,4 +29,4 @@ class Game(object):
 
     @property
     def board(self):
-        return self._board.print_board()
+        return self._board.display(self._players)
