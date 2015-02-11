@@ -1,3 +1,4 @@
+import pdb
 class Mask(object):
 
     def __init__(self, mask, type="mask"):
@@ -34,34 +35,31 @@ class Mask(object):
     #def xor_with():
 
     def bit(self,position):
-        position *= -1
-        return self.to_list[:position]
-
-
-    def convert_from_bin(self, bin):
-        # take '0b111111111' and convert into 777
-
-        bin = list(bin)[2:]     # drop off the 0b from the start
-        mask = ''
+        """ position 0 should become 8
+            position 1 should become 7
+            position 2 should become 6
+            etc.
+        """
+        position = (position - 8) * -1
         #pdb.set_trace()
-        while len(bin) != 0:
-            bits = "".join(bin[-3:])
+        return int(self.to_list[position])
+
+
+    def convert_from_bin(self, b):
+        """ take '0b111111111' and convert into 777 """
+
+        b = list(b)[2:]     # drop off the 0b from the start
+        mask = ''
+        while len(b) != 0:
+            bits = ""
+            for i in range(0,3): bits += b.pop(0)     # grab the bits.
             mask += str(int(bits, 2))
-            bin = bin[:-3]
         return int(mask)
 
     def convert_from_int(self, i):
-        # take an integer and turn it into a mask.
-        # eg 511 == 777
+        """ take an integer and turn it into a mask.
+            Eg. 511 == 777
+        """
 
-        a = list(format(i, '#011b'))
-        a.pop(0)
-        a.pop(0)
-        "".join(a)
-
-        mask = "0b"
-        for row in range(0, 3):
-            v = str(a.pop(0) + a.pop(0) + a.pop(0))
-            mask += v
-
-        return mask
+        mask = bin(i)
+        return self.convert_from_bin(mask)
