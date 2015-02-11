@@ -20,8 +20,9 @@ tokens = [ "X", "O" ]
 board = Board(3,3)
 
 players = []
-for player in range(0,2):
+for player in range(0,1):
     players.append(Human(tokens.pop()))
+    players.append(AI(tokens.pop()))
 
 game = Game(board, players)
 
@@ -30,7 +31,7 @@ for x in range(0, 10):
     player = game.next_player
     print player.token
     print bin(player.moves)
-    game.move(player, 2)
+    game.move(player)
 
 
 #player = game.next_player()

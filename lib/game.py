@@ -10,8 +10,8 @@ class Game(object):
         self._board = board
         self._players = players
 
-    def move(self, player, position):
-        player.move(position, self._board.mask(self._players))
+    def move(self, player):
+        player.move(self._board.mask(self._players))
 
     @property
     def players(self):
@@ -30,3 +30,4 @@ class Game(object):
     @property
     def board(self):
         return self._board.display(self._players)
+

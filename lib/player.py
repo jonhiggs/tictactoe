@@ -1,3 +1,5 @@
+import pdb
+
 class Player(object):
 
     def __init__(self, token):
@@ -12,7 +14,7 @@ class Player(object):
     def moves(self):
         return self._moves
 
-    def move(self, position, board_mask):
+    def move_to(self, position, board_mask):
         if self.position_vacant(position, board_mask):
             self._moves ^= (( self.mask2int(position) ))
         else:

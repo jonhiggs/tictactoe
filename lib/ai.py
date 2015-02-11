@@ -1,3 +1,17 @@
+from player import *
+from random import randint, shuffle
+
+class AI(Player):
+
+    def __init__(self, token):
+        self._token = token
+        self._moves = 0
+        super(Player, self).__init__()
+
+    def move(self, board_mask):
+        position = randint(1,9)
+        self.move_to(position, board_mask)
+
 #from random import shuffle
 #
 #class AI(object):
