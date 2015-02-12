@@ -19,8 +19,8 @@ class Board(object):
     @property
     def columns(self): return self._columns
 
-    def display(self, players):
-        for player in players:
+    def display(self):
+        for player in self._players:
             for i in range(0, (self._positions-1) ):
                 column = i % self._columns
                 row = i / self._rows
@@ -38,8 +38,13 @@ class Board(object):
 
 
     def vacant(self, position):
-        return True
+        moves = 0
+        for player in self._players:
+            moves |= player.moves
 
+        moves ^= int('111111111', 2)
+
+        return True
 
     def move_to(self, position, player):
         column = position % self._columns

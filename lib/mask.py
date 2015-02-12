@@ -12,7 +12,7 @@ class Mask(object):
         elif type == "int":
             self._mask = self.convert_from_int(mask)
         else:
-            self._mask = mask
+            self._mask = str(mask)
 
     @property
     def mask(self):

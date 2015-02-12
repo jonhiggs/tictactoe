@@ -5,7 +5,7 @@ class Player(object):
 
     def __init__(self, token):
         self._token = token
-        self._moves = 0
+        self._moves = "000"
 
     @property
     def moves(self):

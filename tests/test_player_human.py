@@ -19,10 +19,7 @@ class TestPlayerHuman(unittest.TestCase):
     def test_moves(self):
         moves = self._player.moves
         self.assertEqual(str(type(moves)), "<class 'mask.Mask'>")
-        self.assertEqual(moves.mask, 0)
-
-class TestPlayerHumanMoved
-
+        self.assertEqual(moves.mask, '000')
 
     #def test_display(self):
     #    self.assertEqual(self._board.display, 3)
