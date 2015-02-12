@@ -1,5 +1,6 @@
 import pdb
 from mask import Mask
+from path import Path
 
 class Player(object):
 
@@ -7,6 +8,17 @@ class Player(object):
         self._board = None
         self._moves = Mask('000')
         self._token = None
+
+        self.path = {
+                "0:2": Path("0:2", self),
+                "3:5": Path("3:5", self),
+                "6:8": Path("6:8", self),
+                "0:6": Path("0:6", self),
+                "1:7": Path("1:7", self),
+                "2:8": Path("2:8", self),
+                "0:8": Path("0:8", self),
+                "3:6": Path("3:6", self),
+                }
 
     @property
     def moves(self):

@@ -40,9 +40,6 @@ class Mask(object):
     def or_with(self, input):
         return to_int | Mask(input).to_int
 
-    #def and_with():
-    #def xor_with():
-
     @property
     def not_bits(self):
         notted_int = (self.to_int ^ 511)

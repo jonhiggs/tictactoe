@@ -17,32 +17,6 @@ class AI(Player):
         for path in winning_positions:
             mask = Mask(winning_positions["path"], bin)
 
-    def path_weight(self, path):
-        weight = 0
-        if path_blocked(path):          weight += 100
-        if path_required_moves == 1:    weight += 0
-        if path_required_moves == 2:    weight += 10
-        if path_required_moves == 3:    weight += 20
-        return weight
-
-    def path_blocked(self, path):
-        return False
-
-    def path_required_moves(self, path):
-        return 3
-
-    def winning_positions(self):
-        return {
-                "0-2": "0b111000000",
-                "3-5": "0b000111000",
-                "6-8": "0b000000111",
-                "0-6": "0b100100100",
-                "1-7": "0b010010010",
-                "2-8": "0b001001001",
-                "0-8": "0b100010001",
-                "3-6": "0b001010100",
-                }
-
 
 ### 1. Check if computer can make winning move
 ##def win_move(board, letter):
