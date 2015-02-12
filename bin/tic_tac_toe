@@ -24,7 +24,7 @@ for i in range(0,2):
 
 game = Game(players)
 
-for i in range(0, 10):
+while not game.over:
     print player.token
     game.move
     game.board

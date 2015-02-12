@@ -33,13 +33,22 @@ class Game(object):
 
     @property
     def drawn(self):
-        for player in self.players:
-            if player.won: return False
-
-        if re.match(".*_.*", self._board.state):
+        if self.won:
+            return False
+        elif re.match(".*_.*", self._board.state):
             return False
         else:
             return True
+
+    @property
+    def won(self):
+        for player in self.players:
+            if player.won: return False
+        return False
+
+    @property
+    def over(self):
+        return self.drawn or self.won
 
     @property
     def board(self):
