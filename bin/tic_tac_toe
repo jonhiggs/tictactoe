@@ -6,28 +6,29 @@ sys.path.append(
     os.path.realpath( os.path.dirname(__file__) + '/../lib/')
 )
 
+import pdb
+
 from game import *
 from random import shuffle
 
 print "\nWelcome to Tic Tac Toe! \n"
 
 tokens = [ "X", "O" ]
-
-board = Board(3,3)
+board = Board()
 
 players = []
-for player in range(0,1):
-    players.append(Human(tokens.pop()))
-    #players.append(AI(tokens.pop()))
+for i in range(0,2):
+    player = Human()
+    player.token = tokens.pop()
+    players.append(player)
 
-game = Game(board, players)
+game = Game(players)
 
 for i in range(0, 10):
     player = game.next_player
     print player.token
     game.move(player)
     game.board
-
 
 #player = game.next_player()
 #print game.next_player.moves(player)
