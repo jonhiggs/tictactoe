@@ -13,7 +13,12 @@ class Player(object):
         return self._moves
 
     def move_to(self, position):
-        return self.moves.set_bit(position, 1)
+        if self.board == None:
+            return False
+        elif self.board.vacant(position):
+            return self.moves.set_bit(position, 1)
+        else:
+            return False
 
     @property
     def token(self):

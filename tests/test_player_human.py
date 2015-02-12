@@ -17,6 +17,7 @@ class TestPlayerHuman(unittest.TestCase):
     def setUp(self):
         self._player = human.Human()
         self._player.token = "X"
+        self._player._board = board.Board()
 
     def test_token(self):
         self.assertEqual(self._player.token, "X")
@@ -35,8 +36,19 @@ class TestPlayerHuman(unittest.TestCase):
 
 class TestPlayerMoveClash(unittest.TestCase):
     def setUp(self):
-        self._player = human.Human("X")
+        self._board = board.Board()
 
+        self._player1 = human.Human()
+        self._player1.token = "X"
+        self._board.add_player(self._player1)
+
+        self._player2 = human.Human()
+        self._player2.token = "O"
+        self._board.add_player(self._player2)
+
+    def test_move_to(self):
+        self.assertTrue(self._player1.move_to(0))
+        self.assertFalse(self._player2.move_to(0))
 
     #def test_display(self):
     #    self.assertEqual(self._board.display, 3)
