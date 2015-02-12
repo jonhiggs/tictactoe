@@ -30,6 +30,6 @@ class Game(object):
 
     @property
     def board(self):
-        return self._board.display(self._players)
+        print self._board.state
 
 
