@@ -26,8 +26,3 @@ class Player(object):
     @property
     def board(self):
         return self._board
-
-    @board.setter
-    def board(self, value):
-        self._board = value
-

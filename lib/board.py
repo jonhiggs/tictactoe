@@ -27,7 +27,7 @@ class Board(object):
         if self._players.append(player):
             return False
         else:
-            player.board = self
+            player._board = self
             return True
 
     def display(self):
