@@ -36,16 +36,6 @@ class TestGameTwoHumanPlayers(unittest.TestCase):
     def test_next_player(self):
         self.assertNotEqual(self._game.next_player, self._game.next_player)
 
-    def test_game_won(self):
-        self.assertFalse(self._game.won)
-        self._game.player.move_to(0)
-        self.assertFalse(self._game.won)
-        self._game.player.move_to(1)
-        self._game.player.move_to(2)
-        self.assertTrue(self._game.won)
-        self._game.player.move_to(3)
-        self.assertTrue(self._game.won)
-
     def test_game_drawn(self):
         self.assertFalse(self._game.drawn)
         for p in [ 0, 1, 3, 4, 8 ]:
