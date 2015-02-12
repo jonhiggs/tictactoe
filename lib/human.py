@@ -4,7 +4,7 @@ class Human(Player):
 
     def __init__(self, token):
         self._token = token
-        self._moves = 0
+        self._moves = Mask('000')
         super(Player, self).__init__()
 
     def move(self, board):

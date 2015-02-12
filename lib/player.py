@@ -5,11 +5,14 @@ class Player(object):
 
     def __init__(self, token):
         self._token = token
-        self._moves = "000"
+        self._moves = Mask('000')
 
     @property
     def moves(self):
-        return Mask(self._moves)
+        return self._moves
+
+    def move_to(self, position):
+        return self.moves.set_bit(position, 1)
 
     @property
     def token(self):
