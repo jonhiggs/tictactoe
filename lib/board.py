@@ -2,16 +2,22 @@ import pdb
 from mask import Mask
 
 class Board(object):
-    def __init__(self,rows=3, columns=3):
+    def __init__(self, players, rows=3, columns=3):
         self._rows = rows
         self._columns = columns
         self._positions = rows * columns
+        self._players = players
         self._board = [
             [ None, None, None ],
             [ None, None, None ],
             [ None, None, None ],
         ]
 
+    @property
+    def rows(self): return self._rows
+
+    @property
+    def columns(self): return self._columns
 
     def display(self, players):
         for player in players:
@@ -30,6 +36,9 @@ class Board(object):
                     print "\n",
                     print "-" * 8 * (self._columns+1)
 
+
+    def vacant(self, position):
+        return True
 
 
     def move_to(self, position, player):
