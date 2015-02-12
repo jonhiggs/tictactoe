@@ -85,3 +85,7 @@ class Mask(object):
 
         mask = bin(i)
         return self.convert_from_bin(mask)
+
+    def bits_set(self, bits):
+        """ if bits set in 'bits' are also set in 'self', return true """
+        return (self.to_int & bits.to_int) == bits.to_int

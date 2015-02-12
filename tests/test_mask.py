@@ -6,6 +6,7 @@ sys.path.append(
     os.path.realpath( os.path.dirname(__file__) + '/../lib/')
 )
 
+import pdb
 import random
 import unittest
 import mask
@@ -55,6 +56,13 @@ class TestMaskWithMask(unittest.TestCase):
 
     def test_convert_from_int(self):
         self.assertEqual(self._mask.convert_from_int(511), '777')
+
+    def test_bits_set(self):
+        """ if bits set in 'bits' are also set in 'self', return true """
+        self.assertTrue(self._mask.bits_set(mask.Mask("700")))
+        self.assertTrue(self._mask.bits_set(mask.Mask("500")))
+        self.assertTrue(self._mask.bits_set(mask.Mask("750")))
+        self.assertFalse(self._mask.bits_set(mask.Mask("755")))
 
 if __name__ == '__main__':
     unittest.main()

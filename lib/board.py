@@ -54,7 +54,7 @@ class Board(object):
         for player in self._players:
             for position in range(0,9):
                 if player.moves.bit(position) == 1:
-                    state[position] = player.token
+                    state[position] = str(player.token)
 
         return "".join(state)
 

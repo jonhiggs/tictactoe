@@ -29,6 +29,10 @@ for i in range(0, 10):
     game.move
     game.board
 
+    if game.won:
+        print "congradulations %s, you won" % player.token
+        break
+
     game.next_player
 
 #player = game.next_player()
