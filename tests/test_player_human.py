@@ -15,7 +15,11 @@ import human
 class TestPlayerHuman(unittest.TestCase):
 
     def setUp(self):
-        self._player = human.Human("X")
+        self._player = human.Human()
+        self._player.token = "X"
+
+    def test_token(self):
+        self.assertEqual(self._player.token, "X")
 
     def test_moves(self):
         moves = self._player.moves
@@ -28,6 +32,10 @@ class TestPlayerHuman(unittest.TestCase):
         self.assertEqual(self._player.moves.bit(0), 1)
         self.assertFalse(self._player.move_to(0))
         self.assertEqual(self._player.moves.bit(0), 1)
+
+class TestPlayerMoveClash(unittest.TestCase):
+    def setUp(self):
+        self._player = human.Human("X")
 
 
     #def test_display(self):

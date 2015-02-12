@@ -3,9 +3,10 @@ from mask import Mask
 
 class Player(object):
 
-    def __init__(self, token):
-        self._token = token
+    def __init__(self):
+        self._board = None
         self._moves = Mask('000')
+        self._token = None
 
     @property
     def moves(self):
@@ -17,3 +18,16 @@ class Player(object):
     @property
     def token(self):
         return self._token
+
+    @token.setter
+    def token(self, value):
+        self._token = value
+
+    @property
+    def board(self):
+        return self._board
+
+    @board.setter
+    def board(self, value):
+        self._board = value
+
