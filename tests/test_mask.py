@@ -13,10 +13,10 @@ import mask
 class TestMaskWithMask(unittest.TestCase):
 
     def setUp(self):
-        self._mask = mask.Mask(754)
+        self._mask = mask.Mask('754')
 
     def test_mask(self):
-        self.assertEqual(self._mask.mask, 754)
+        self.assertEqual(self._mask.mask, '754')
 
     def test_to_int(self):
         self.assertEqual(self._mask.to_int, 492)
@@ -39,13 +39,15 @@ class TestMaskWithMask(unittest.TestCase):
         self.assertEqual(self._mask.bit(8), 1)
 
     def test_convert_from_bin(self):
-        self.assertEqual(self._mask.convert_from_bin('0b111111111'), 777)
-        self.assertEqual(self._mask.convert_from_bin('0b111101001'), 751)
+        self.assertEqual(self._mask.convert_from_bin('0b111111111'), '777')
+        self.assertEqual(self._mask.convert_from_bin('0b111101001'), '751')
 
-    # FIXME
-    #def test_convert_from_int(self):
-    #    self.assertEqual(self._mask.convert_from_int(511), 777)
-    #    self.assertEqual(self._mask.convert_from_int('511'), 777)
+    def test_not_bits(self):
+        self._mask.not_bits
+        self.assertEqual(self._mask.mask, "023")
+
+    def test_convert_from_int(self):
+        self.assertEqual(self._mask.convert_from_int(511), '777')
 
 if __name__ == '__main__':
     unittest.main()
