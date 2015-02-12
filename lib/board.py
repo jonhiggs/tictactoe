@@ -2,11 +2,11 @@ import pdb
 from mask import Mask
 
 class Board(object):
-    def __init__(self, players, rows=3, columns=3):
+    def __init__(self, rows=3, columns=3):
         self._rows = rows
         self._columns = columns
         self._positions = rows * columns
-        self._players = players
+        self._players = []
         self._board = [
             [ None, None, None ],
             [ None, None, None ],
@@ -18,6 +18,17 @@ class Board(object):
 
     @property
     def columns(self): return self._columns
+
+    def add_player(self, player):
+        if player.token == None: return False
+        for p in self._players:
+            if p.token == player.token: return False
+
+        if self._players.append(player):
+            return False
+        else:
+            player.board = self
+            return True
 
     def display(self):
         for player in self._players:
@@ -40,11 +51,9 @@ class Board(object):
     def vacant(self, position):
         moves = 0
         for player in self._players:
-            moves |= player.moves
-
-        moves ^= int('111111111', 2)
-
-        return True
+            moves |= player.moves.to_int
+        moves = Mask(moves, 'int')
+        return moves.notted
 
     def move_to(self, position, player):
         column = position % self._columns
