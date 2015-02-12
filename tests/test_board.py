@@ -48,18 +48,21 @@ class TestBoardWithMoves(unittest.TestCase):
     def setUp(self):
         self._board = board.Board()
 
-        player1 = human.Human()
-        player1.token = "X"
-        self._board.add_player(player1)
+        self._player1 = human.Human()
+        self._player1.token = "X"
+        self._board.add_player(self._player1)
 
-        player2 = human.Human()
-        player2.token = "O"
-        self._board.add_player(player2)
+        self._player2 = human.Human()
+        self._player2.token = "O"
+        self._board.add_player(self._player2)
 
         self._board._players[0].move_to(0)
         self._board._players[1].move_to(1)
         self._board._players[0].move_to(2)
         self._board._players[1].move_to(3)
+
+    def test_players(self):
+        self.assertEqual([self._player1, self._player2], self._board._players)
 
     def test_state(self):
         state = "XOXO_____"
