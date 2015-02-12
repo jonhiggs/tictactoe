@@ -39,6 +39,10 @@ class TestBoard(unittest.TestCase):
     def test_vacant(self):
         self.assertTrue(self._board.vacant(0))
 
+    def test_display(self):
+        b = "\n\n         |          |         \n-----------------------------\n         |          |         \n-----------------------------\n         |          |         \n"
+        self.assertEquals(self._board.display, b)
+
 
 class TestBoardWithMoves(unittest.TestCase):
     def setUp(self):
@@ -64,6 +68,10 @@ class TestBoardWithMoves(unittest.TestCase):
     def test_vacant(self):
         self.assertFalse(self._board.vacant(0))
         self.assertTrue(self._board.vacant(8))
+
+    def test_display(self):
+        b = "\n\n   X     |    O     |    X    \n-----------------------------\n   O     |          |         \n-----------------------------\n         |          |         \n"
+        self.assertEquals(self._board.display, b)
 
 
 # test adding a player with duplicate token

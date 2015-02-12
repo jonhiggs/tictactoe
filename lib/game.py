@@ -52,6 +52,6 @@ class Game(object):
 
     @property
     def board(self):
-        print self._board.state
+        print self._board.display
 
 

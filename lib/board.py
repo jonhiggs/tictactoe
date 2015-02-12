@@ -5,13 +5,7 @@ class Board(object):
     def __init__(self, rows=3, columns=3):
         self._rows = rows
         self._columns = columns
-        self._positions = rows * columns
         self._players = []
-        self._board = [
-            [ None, None, None ],
-            [ None, None, None ],
-            [ None, None, None ],
-        ]
 
 
     @property
@@ -31,22 +25,27 @@ class Board(object):
             player._board = self
             return True
 
+    @property
     def display(self):
-        for player in self._players:
-            for i in range(0, (self._positions-1) ):
-                column = i % self._columns
-                row = i / self._rows
-                value = self._board[row][column]
+        b = "\n\n"
+        i = 1
+        for position in list(self.state):
+            if position == "_":
+                b += " ".center(8)
+            else:
+                b += position.center(8)
 
-                row_end = (i % self._columns) == (self._columns-1)
+            if (i % self.rows):
+                b += " | "
+            elif (i == self.rows * self.columns):
+                b += "\n"
+            else:
+                b += "\n"
+                b += "-" * ((8 * self.rows) + 5)
+                b += "\n"
+            i += 1
 
-                if value == None: value = ""
-                print str(value).center(8),
-                if not row_end:
-                    print "|",
-                else:
-                    print "\n",
-                    print "-" * 8 * (self._columns+1)
+        return b
 
     @property
     def state(self):
