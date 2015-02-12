@@ -10,6 +10,10 @@ class Mask(object):
             self._mask = mask
 
     @property
+    def mask(self):
+        return self._mask
+
+    @property
     def to_int(self):
         # take a mask like 777 and convert it into an integer for performing
         # bitwise operations.

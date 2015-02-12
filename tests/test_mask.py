@@ -15,6 +15,9 @@ class TestMaskWithMask(unittest.TestCase):
     def setUp(self):
         self._mask = mask.Mask(754)
 
+    def test_mask(self):
+        self.assertEqual(self._mask.mask, 754)
+
     def test_to_int(self):
         self.assertEqual(self._mask.to_int, 492)
 
