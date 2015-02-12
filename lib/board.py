@@ -60,11 +60,7 @@ class Board(object):
 
 
     def vacant(self, position):
-        moves = 0
-        for player in self._players:
-            moves |= player.moves.to_int
-        moves = Mask(moves, 'int')
-        return moves.notted
+        return list(self.state)[position] == "_"
 
     def move_to(self, position, player):
         column = position % self._columns

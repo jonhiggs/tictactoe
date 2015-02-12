@@ -36,6 +36,10 @@ class TestBoard(unittest.TestCase):
         state = "_________"
         self.assertEqual(self._board.state, state)
 
+    def test_vacant(self):
+        self.assertTrue(self._board.vacant(0))
+
+
 class TestBoardWithMoves(unittest.TestCase):
     def setUp(self):
         self._board = board.Board()
@@ -57,14 +61,10 @@ class TestBoardWithMoves(unittest.TestCase):
         state = "XOXO_____"
         self.assertEqual(self._board.state, state)
 
-    #def test_vacant(self):
-    #    self.assertTrue(self._board.vacant(0))
+    def test_vacant(self):
+        self.assertFalse(self._board.vacant(0))
+        self.assertTrue(self._board.vacant(8))
 
-    #def test_after_moved(self):
-    #    #players[0].move(2)
-
-    #def test_display(self):
-    #    self.assertEqual(self._board.display, 3)
 
 # test adding a player with duplicate token
 
