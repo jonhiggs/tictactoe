@@ -35,6 +35,9 @@ class TestGameTwoHumanPlayers(unittest.TestCase):
     def test_players(self):
         self.assertEquals(len(self._game.players), 2)
 
+    def test_next_player(self):
+        self.assertNotEqual(self._game.next_player, self._game.next_player)
+
 
 
 if __name__ == '__main__':
