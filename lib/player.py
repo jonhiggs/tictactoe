@@ -49,3 +49,8 @@ class Player(object):
                 return True
         return False
 
+    @property
+    def opponents(self):
+        players = self._board._players
+        players.remove(self)
+        return players

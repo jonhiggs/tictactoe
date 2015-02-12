@@ -66,6 +66,9 @@ class TestPlayerMoveClash(unittest.TestCase):
         self.assertTrue(self._player1.move_to(0))
         self.assertFalse(self._player2.move_to(0))
 
+    def test_opponents(self):
+        self.assertEqual(self._player1.opponents, [ self._player2 ])
+
     #def test_display(self):
     #    self.assertEqual(self._board.display, 3)
 
