@@ -13,6 +13,7 @@ class Board(object):
             [ None, None, None ],
         ]
 
+
     @property
     def rows(self): return self._rows
 
@@ -46,6 +47,16 @@ class Board(object):
                 else:
                     print "\n",
                     print "-" * 8 * (self._columns+1)
+
+    @property
+    def state(self):
+        state = list("_________")
+        for player in self._players:
+            for position in range(0,9):
+                if player.moves.bit(position) == 1:
+                    state[position] = player.token
+
+        return "".join(state)
 
 
     def vacant(self, position):

@@ -32,6 +32,31 @@ class TestBoard(unittest.TestCase):
     def test_columns(self):
         self.assertEqual(self._board.columns, 3)
 
+    def test_state(self):
+        state = "_________"
+        self.assertEqual(self._board.state, state)
+
+class TestBoardWithMoves(unittest.TestCase):
+    def setUp(self):
+        self._board = board.Board()
+
+        player1 = human.Human()
+        player1.token = "X"
+        self._board.add_player(player1)
+
+        player2 = human.Human()
+        player2.token = "O"
+        self._board.add_player(player2)
+
+        self._board._players[0].move_to(0)
+        self._board._players[1].move_to(1)
+        self._board._players[0].move_to(2)
+        self._board._players[1].move_to(3)
+
+    def test_state(self):
+        state = "XOXO_____"
+        self.assertEqual(self._board.state, state)
+
     #def test_vacant(self):
     #    self.assertTrue(self._board.vacant(0))
 
