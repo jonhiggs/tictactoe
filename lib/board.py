@@ -7,7 +7,6 @@ class Board(object):
         self._columns = columns
         self._players = []
 
-
     @property
     def rows(self): return self._rows
 

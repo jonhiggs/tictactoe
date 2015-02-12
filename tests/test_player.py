@@ -17,7 +17,8 @@ class TestPlayer(unittest.TestCase):
     def setUp(self):
         self._player = player.Player()
         self._player.token = "X"
-        self._player._board = board.Board()
+        self._board = board.Board()
+        self._board.add_player(self._player)
 
     def test_token(self):
         self.assertEqual(self._player.token, "X")
@@ -44,6 +45,10 @@ class TestPlayer(unittest.TestCase):
         self._player.move_to(3)
         self.assertTrue(self._player.won)
 
+    def test_board(self):
+        self.assertIsNotNone(self._board)
+        self.assertEqual(self._board, self._player._board)
+        self.assertIn(self._player, self._board._players)
 
 class TestPlayerMoveClash(unittest.TestCase):
     def setUp(self):
