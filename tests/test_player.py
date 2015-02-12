@@ -10,12 +10,12 @@ import pdb
 import random
 import unittest
 import board
-import human
+import player
 
-class TestPlayerHuman(unittest.TestCase):
+class TestPlayer(unittest.TestCase):
 
     def setUp(self):
-        self._player = human.Human()
+        self._player = player.Player()
         self._player.token = "X"
         self._player._board = board.Board()
 
@@ -49,11 +49,11 @@ class TestPlayerMoveClash(unittest.TestCase):
     def setUp(self):
         self._board = board.Board()
 
-        self._player1 = human.Human()
+        self._player1 = player.Player()
         self._player1.token = "X"
         self._board.add_player(self._player1)
 
-        self._player2 = human.Human()
+        self._player2 = player.Player()
         self._player2.token = "O"
         self._board.add_player(self._player2)
 

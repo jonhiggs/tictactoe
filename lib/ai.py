@@ -3,36 +3,47 @@ from random import randint, shuffle
 
 class AI(Player):
 
-    def __init__(self, token):
-        self._token = token
-        self._moves = 0
-        super(Player, self).__init__()
+    def __init__(self):
+        self._board = None
+        self._moves = Mask('000')
+        self._token = None
 
-    def move(self, board_mask):
-        position = randint(1,9)
+    def move(self):
+        position = randint(0,8)
         self.move_to(position, board_mask)
 
-#from random import shuffle
-#
-#class AI(object):
-#
-#    def __init__(self):
-#        # create a list like this ' ' * 9
-#        self._think_time = 0.1
-#        self._token = shuffle([ 'O', 'X' ]).pop()
-#        self._moves = '0b000000000'
-#
-#    @property
-#    def token(self):
-#        return self._token
-#
-##    def move(board, letter):
-##        if letter == 'X':
-##            p_letter = 'O'
-##        else:
-##            p_letter = 'X'
-##        return win_move(board, letter) or block_move(board, p_letter) or move_corner(board) or move_center(board) or move_side(board)
-##
+    def winning_path(self):
+        scores = []
+        for path in winning_positions:
+            mask = Mask(winning_positions["path"], bin)
+
+    def path_weight(self, path):
+        weight = 0
+        if path_blocked(path):          weight += 100
+        if path_required_moves == 1:    weight += 0
+        if path_required_moves == 2:    weight += 10
+        if path_required_moves == 3:    weight += 20
+        return weight
+
+    def path_blocked(self, path):
+        return False
+
+    def path_required_moves(self, path):
+        return 3
+
+    def winning_positions(self):
+        return {
+                "0-2": "0b111000000",
+                "3-5": "0b000111000",
+                "6-8": "0b000000111",
+                "0-6": "0b100100100",
+                "1-7": "0b010010010",
+                "2-8": "0b001001001",
+                "0-8": "0b100010001",
+                "3-6": "0b001010100",
+                }
+
+
 ### 1. Check if computer can make winning move
 ##def win_move(board, letter):
 ##    print "win move"
