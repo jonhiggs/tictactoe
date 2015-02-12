@@ -61,12 +61,3 @@ class Board(object):
 
     def vacant(self, position):
         return list(self.state)[position] == "_"
-
-    def move_to(self, position, player):
-        column = position % self._columns
-        row = position / self._rows
-        if self._board[row][column] == None:
-            self._board[row][column] = player.token
-            return True
-        else:
-            return False

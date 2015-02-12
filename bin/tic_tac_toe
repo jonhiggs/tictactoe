@@ -25,10 +25,11 @@ for i in range(0,2):
 game = Game(players)
 
 for i in range(0, 10):
-    player = game.next_player
     print player.token
-    game.move(player)
+    game.move
     game.board
+
+    game.next_player
 
 #player = game.next_player()
 #print game.next_player.moves(player)

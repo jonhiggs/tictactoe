@@ -11,12 +11,17 @@ class Game(object):
         for player in players:
             self._board.add_player(player)
 
-    def move(self, player):
-        player.move(self._board)
+    @property
+    def move(self):
+        self.player.move()
 
     @property
     def players(self):
         return self._board._players
+
+    @property
+    def player(self):
+        return self.players[0]
 
     @property
     def next_player(self):
