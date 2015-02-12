@@ -12,18 +12,18 @@ class Mask(object):
         elif type == "int":
             self._mask = self.convert_from_int(mask)
         else:
-            self._mask = str(mask)
+            self._mask = str(mask).zfill(3)
 
     @property
     def mask(self):
-        return self._mask.zfill(3)
+        return self._mask
 
     @property
     def to_int(self):
         # take a mask like 777 and convert it into an integer for performing
         # bitwise operations.
         i = 0
-        for value in list(str(self._mask)):
+        for value in list(self.mask):
             i <<= 3
             i |= int(value)
         return i
@@ -58,6 +58,12 @@ class Mask(object):
         position = (position - 8) * -1
         return int(self.to_list[position])
 
+    def set_bit(self, position, value):
+        if self.bit(position) == value:
+            return False
+
+        self._mask = Mask(self.to_int + ( 2 ** position), 'int').mask
+        return True
 
     def convert_from_bin(self, b):
         """ take '0b111111111' and convert into 777 """

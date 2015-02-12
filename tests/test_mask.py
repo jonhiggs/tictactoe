@@ -38,6 +38,13 @@ class TestMaskWithMask(unittest.TestCase):
         self.assertEqual(self._mask.bit(7), 1)
         self.assertEqual(self._mask.bit(8), 1)
 
+    def test_set_bit(self):
+        self.assertEqual(self._mask.bit(0), 0)
+        self.assertFalse(self._mask.set_bit(0,0))
+        self.assertEqual(self._mask.bit(0), 0)
+        self.assertTrue(self._mask.set_bit(0,1))
+        self.assertEqual(self._mask.bit(0), 1)
+
     def test_convert_from_bin(self):
         self.assertEqual(self._mask.convert_from_bin('0b111111111'), '777')
         self.assertEqual(self._mask.convert_from_bin('0b111101001'), '751')
