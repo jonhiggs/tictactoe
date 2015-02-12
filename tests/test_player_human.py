@@ -34,6 +34,17 @@ class TestPlayerHuman(unittest.TestCase):
         self.assertFalse(self._player.move_to(0))
         self.assertEqual(self._player.moves.bit(0), 1)
 
+    def test_won(self):
+        self.assertFalse(self._player.won)
+        self._player.move_to(0)
+        self.assertFalse(self._player.won)
+        self._player.move_to(1)
+        self._player.move_to(2)
+        self.assertTrue(self._player.won)
+        self._player.move_to(3)
+        self.assertTrue(self._player.won)
+
+
 class TestPlayerMoveClash(unittest.TestCase):
     def setUp(self):
         self._board = board.Board()

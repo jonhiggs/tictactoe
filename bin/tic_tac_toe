@@ -29,7 +29,7 @@ for i in range(0, 10):
     game.move
     game.board
 
-    if game.won:
+    if player.won:
         print "congradulations %s, you won" % player.token
         break
 

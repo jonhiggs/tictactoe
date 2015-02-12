@@ -46,6 +46,17 @@ class TestGameTwoHumanPlayers(unittest.TestCase):
         self._game.player.move_to(3)
         self.assertTrue(self._game.won)
 
+    def test_game_drawn(self):
+        self.assertFalse(self._game.drawn)
+        for p in [ 0, 1, 3, 4, 8 ]:
+            self._game.player.move_to(p)
+
+        self._game.next_player
+        for p in [ 2, 5, 6, 7 ]:
+            self._game.player.move_to(p)
+
+        self.assertTrue(self._game.drawn)
+
 
 
 
