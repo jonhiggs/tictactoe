@@ -6,8 +6,6 @@ sys.path.append(
     os.path.realpath( os.path.dirname(__file__) + '/../lib/')
 )
 
-import pdb
-import random
 import unittest
 import mask
 

@@ -31,8 +31,3 @@ while not game.over:
         break
 
     game.next_player
-
-#player = game.next_player()
-#print game.next_player.moves(player)
-
-#print game.move(2)

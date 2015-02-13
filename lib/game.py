@@ -1,10 +1,7 @@
 from random import randint, shuffle
+from re import match
 
-from board import *
-from human import *
-from ai import *
-from mask import *
-import re
+from board import Board
 
 class Game(object):
     def __init__(self, players):
@@ -35,7 +32,7 @@ class Game(object):
     def drawn(self):
         if self.won:
             return False
-        elif re.match(".*_.*", self._board.state):
+        elif match(".*_.*", self._board.state):
             return False
         else:
             return True

@@ -5,10 +5,8 @@ sys.path.append(
     os.path.realpath( os.path.dirname(__file__) + '/../lib/')
 )
 
-import random
 import unittest
 import board
-import path
 import player
 
 class TestPath(unittest.TestCase):
