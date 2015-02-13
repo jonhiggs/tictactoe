@@ -50,7 +50,7 @@ class TestPlayer(unittest.TestCase):
         self.assertEqual(self._board, self._player._board)
         self.assertIn(self._player, self._board._players)
 
-class TestPlayerMoveClash(unittest.TestCase):
+class TestPlayers(unittest.TestCase):
     def setUp(self):
         self._board = board.Board()
 
@@ -73,6 +73,7 @@ class TestPlayerMoveClash(unittest.TestCase):
 
     #def test_display(self):
     #    self.assertEqual(self._board.display, 3)
+
 
 if __name__ == '__main__':
     unittest.main()

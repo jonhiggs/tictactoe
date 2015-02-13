@@ -18,6 +18,7 @@ class Path(object):
         self._player = player
 
 
+    @property
     def weight(self):
         weight = 0
 
