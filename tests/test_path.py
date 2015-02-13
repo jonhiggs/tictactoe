@@ -57,5 +57,8 @@ class TestPath(unittest.TestCase):
         self._player.move_to(1)
         self.assertEqual(self._player.paths["0:2"].weight, 100)
 
+    def test_positions(self):
+        self.assertEqual(len(self._player.paths["0:2"].positions), 3)
+
 if __name__ == '__main__':
     unittest.main()

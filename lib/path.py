@@ -1,4 +1,6 @@
+import pdb
 from mask import Mask
+from position import Position
 
 class Path(object):
     def __init__(self, path, player):
@@ -45,5 +47,20 @@ class Path(object):
             if (opponent.moves.to_int & self.mask.to_int) != 0:
                 return True
         return False
+
+    @property
+    def positions(self):
+        # TODO: refactor this better
+        p = 0
+        data = []
+        for value in self.mask.to_list:
+            if value == 1:
+                data.append(Position(p, self))
+            p += 1
+        return data
+
+
+
+
 
     #def winning_positions(self):
