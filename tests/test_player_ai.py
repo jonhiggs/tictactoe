@@ -11,7 +11,6 @@ import board
 import ai
 
 class TestPlayerAI(unittest.TestCase):
-
     def setUp(self):
         self._board = board.Board()
 

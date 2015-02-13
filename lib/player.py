@@ -1,8 +1,6 @@
-from mask import Mask
-from path import Path
+from path import *
 
 class Player(object):
-
     def __init__(self):
         self._board = None
         self._moves = Mask('000')

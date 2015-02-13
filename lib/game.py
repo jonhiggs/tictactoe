@@ -1,7 +1,7 @@
 from random import randint, shuffle
 from re import match
 
-from board import Board
+from board import *
 
 class Game(object):
     def __init__(self, players):

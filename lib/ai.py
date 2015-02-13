@@ -1,9 +1,8 @@
-import operator
+from operator import itemgetter
+from random import randint
 from player import *
-from random import randint, shuffle
 
 class AI(Player):
-
     def __init__(self):
         self._board = None
         self._moves = Mask('000')
@@ -19,7 +18,7 @@ class AI(Player):
         for path in self.paths:
             weights[path] = self.paths[path].weight
 
-        weights = sorted(weights.items(), key=operator.itemgetter(1))
+        weights = sorted(weights.items(), key=itemgetter(1))
         return weights[0][0]
 
     @property

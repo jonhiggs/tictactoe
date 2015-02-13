@@ -1,7 +1,6 @@
-from player import Player
+from player import *
 
 class Human(Player):
-
     def __init__(self):
         self._board = None
         self._moves = Mask('000')
