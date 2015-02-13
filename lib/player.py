@@ -63,6 +63,4 @@ class Player(object):
 
     @property
     def opponents(self):
-        players = self._board._players
-        players.remove(self)
-        return players
+        return [p for p in self._board._players if p != self]
