@@ -27,7 +27,7 @@ class TestPath(unittest.TestCase):
         self._board.add_player(self._opponent)
 
     def test_mask(self):
-        self.assertEqual(self._player.path["0:2"].mask.mask, "700")
+        self.assertEqual(self._player.path["0:2"].mask.mask, "007")
 
     def test_board(self):
         self.assertIn(self._player, self._board._players)
@@ -38,8 +38,8 @@ class TestPath(unittest.TestCase):
 
     def test_blocked(self):
         self.assertFalse(self._player.path["0:2"].blocked)
-    #    self._opponent.move_to(0)
-
+        self._opponent.move_to(0)
+        self.assertTrue(self._player.path["0:2"].blocked)
 
 
 
