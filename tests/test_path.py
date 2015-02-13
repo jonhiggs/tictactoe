@@ -48,7 +48,6 @@ class TestPath(unittest.TestCase):
         self._opponent.move_to(1)
         self.assertEqual(self._player.path["0:2"].moves_to_win, None)
 
-
 if __name__ == '__main__':
     unittest.main()
 

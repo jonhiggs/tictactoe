@@ -9,7 +9,7 @@ class Player(object):
         self._moves = Mask('000')
         self._token = None
 
-        self.path = {
+        self.paths = {
                 "0:2": Path("0:2", self),
                 "3:5": Path("3:5", self),
                 "6:8": Path("6:8", self),
@@ -46,19 +46,8 @@ class Player(object):
 
     @property
     def won(self):
-        winning_positions = [
-            "0b111000000",
-            "0b000111000",
-            "0b000000111",
-            "0b100100100",
-            "0b010010010",
-            "0b001001001",
-            "0b100010001",
-            "0b001010100",
-        ]
-        for position in winning_positions:
-            if self.moves.bits_set(Mask(position, 'bin')):
-                return True
+        for path in self.paths:
+            if self.paths[path].moves_to_win == 0: return True
         return False
 
     @property
