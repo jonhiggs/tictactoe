@@ -9,7 +9,13 @@ class Player(object):
         self._moves = Mask('000')
         self._token = None
 
-        self.paths = {
+    @property
+    def moves(self):
+        return self._moves
+
+    @property
+    def paths(self):
+        return {
                 "0:2": Path("0:2", self),
                 "3:5": Path("3:5", self),
                 "6:8": Path("6:8", self),
@@ -19,10 +25,6 @@ class Player(object):
                 "0:8": Path("0:8", self),
                 "3:6": Path("3:6", self),
                 }
-
-    @property
-    def moves(self):
-        return self._moves
 
     def move_to(self, position):
         if self.board == None:

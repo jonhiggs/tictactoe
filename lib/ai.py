@@ -1,3 +1,4 @@
+import operator
 from player import *
 from random import randint, shuffle
 
@@ -12,11 +13,14 @@ class AI(Player):
         position = randint(0,8)
         self.move_to(position, board_mask)
 
-    def winning_path(self):
-        scores = []
-        for path in winning_positions:
-            mask = Mask(winning_positions["path"], bin)
+    @property
+    def ideal_path(self):
+        weights = {}
+        for path in self.paths:
+            weights[path] = self.paths[path].weight
 
+        weights = sorted(weights.items(), key=operator.itemgetter(1))
+        return weights[0][0]
 
 ### 1. Check if computer can make winning move
 ##def win_move(board, letter):

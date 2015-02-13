@@ -25,9 +25,9 @@ class TestPlayerAI(unittest.TestCase):
         self._opponent.token = "O"
         self._opponent._board = self._board
 
-    def test_path_blocked(self):
+    def test_ideal_path(self):
         self._opponent.move_to(0)
-        self.assertTrue(self._player.path_blocked("0-2"))
+        self.assertTrue(self._player.ideal_path)
 
 
 
