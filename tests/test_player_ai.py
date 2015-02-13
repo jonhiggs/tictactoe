@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import sys
 import os
 sys.path.append(
@@ -10,7 +9,6 @@ import random
 import unittest
 import board
 import ai
-import pdb
 
 class TestPlayerAI(unittest.TestCase):
 
@@ -28,8 +26,6 @@ class TestPlayerAI(unittest.TestCase):
     def test_ideal_path(self):
         self._opponent.move_to(0)
         self.assertTrue(self._player.ideal_path)
-
-
 
 
 if __name__ == '__main__':

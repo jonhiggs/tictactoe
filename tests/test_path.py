@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import sys
 import os
 sys.path.append(
@@ -10,7 +9,6 @@ import random
 import unittest
 import board
 import path
-import pdb
 import player
 
 class TestPath(unittest.TestCase):
@@ -63,5 +61,3 @@ class TestPath(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-

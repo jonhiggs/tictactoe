@@ -50,10 +50,6 @@ class TestMaskWithMask(unittest.TestCase):
         self.assertEqual(self._mask.convert_from_bin('0b111111111'), '777')
         self.assertEqual(self._mask.convert_from_bin('0b111101001'), '751')
 
-    def test_not_bits(self):
-        self._mask.not_bits
-        self.assertEqual(self._mask.mask, "023")
-
     def test_convert_from_int(self):
         self.assertEqual(self._mask.convert_from_int(511), '777')
 

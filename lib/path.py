@@ -1,4 +1,3 @@
-import pdb
 from mask import Mask
 
 class Path(object):
