@@ -21,21 +21,24 @@ class Path(object):
     def weight(self):
         weight = 0
 
-        if self.blocked:
-            weight += 100
-
         if self.moves_to_win == 1:
             weight += 0
         elif self.moves_to_win == 2:
             weight += 10
-        else:
+        elif self.moves_to_win == 3:
             weight += 20
+        else:
+            """ cannot be won """
+            weight += 100
 
         return weight
 
     @property
     def moves_to_win(self):
-        return 3
+        if self.blocked:
+            return None
+        mask = Mask( (self.mask.to_int & self._player.moves.to_int), 'int')
+        return (mask.to_list.count('1') - 3) * -1
 
     @property
     def blocked(self):

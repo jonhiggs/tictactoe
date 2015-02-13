@@ -41,6 +41,12 @@ class TestPath(unittest.TestCase):
         self._opponent.move_to(0)
         self.assertTrue(self._player.path["0:2"].blocked)
 
+    def test_moves_to_win(self):
+        self.assertEqual(self._player.path["0:2"].moves_to_win, 3)
+        self._player.move_to(0)
+        self.assertEqual(self._player.path["0:2"].moves_to_win, 2)
+        self._opponent.move_to(1)
+        self.assertEqual(self._player.path["0:2"].moves_to_win, None)
 
 
 if __name__ == '__main__':
