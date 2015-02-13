@@ -16,7 +16,6 @@ class Path(object):
         self.mask = Mask(masks[path], 'bin')
         self._player = player
 
-
     @property
     def weight(self):
         weight = 0
@@ -38,7 +37,7 @@ class Path(object):
         if self.blocked:
             return None
         mask = Mask( (self.mask.to_int & self._player.moves.to_int), 'int')
-        return (mask.to_list.count('1') - 3) * -1
+        return (mask.to_list.count(1) - 3) * -1
 
     @property
     def blocked(self):

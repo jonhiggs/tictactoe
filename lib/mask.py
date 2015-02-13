@@ -33,7 +33,11 @@ class Mask(object):
 
     @property
     def to_list(self):
-        return list(self.to_bin[2:])
+        # TODO: refactor
+        data = []
+        for v in list(self.to_bin[2:]):
+            data.append(int(v))
+        return data
 
     def bit(self,position):
         """ position 0 should become 8, position 1 should become 7... """

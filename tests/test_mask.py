@@ -24,7 +24,7 @@ class TestMaskWithMask(unittest.TestCase):
         self.assertEqual(self._mask.to_bin, '0b111101100')
 
     def test_to_list(self):
-        self.assertEqual(self._mask.to_list, list("111101100"))
+        self.assertEqual(self._mask.to_list, [1,1,1,1,0,1,1,0,0])
 
     def test_bit(self):
         self.assertEqual(self._mask.bit(0), 0)
