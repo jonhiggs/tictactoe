@@ -24,12 +24,7 @@ class Player(object):
                 }
 
     def move_to(self, position):
-        if self.board == None:
-            return False
-        elif self.board.vacant(position):
-            return self.moves.set_bit(position, 1)
-        else:
-            return False
+        self.board.positions[position].owner = self
 
     @property
     def token(self):

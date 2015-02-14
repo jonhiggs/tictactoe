@@ -1,5 +1,6 @@
 import pdb
-from mask import Mask
+from mask import *
+from position import *
 
 class Board(object):
     def __init__(self, rows=3, columns=3):
@@ -7,7 +8,7 @@ class Board(object):
         self._columns = columns
         self._players = []
         self._positions = []
-        for i in (self.rows * self.columns):
+        for i in range(0,(self.rows * self.columns)):
             self._positions.append(Position(Mask(i, 'int')))
 
     @property
