@@ -32,6 +32,10 @@ class TestBoard(unittest.TestCase):
     def test_columns(self):
         self.assertEqual(self._board.columns, 3)
 
+    def test_positions(self):
+        self.assertEqual(len(self._board.positions), 9)
+        self.assertEqual(str(self._board.positions[0].__class__), "<class 'position.Position'>")
+
     def test_display(self):
         b = "\n\n         |          |         \n-----------------------------\n         |          |         \n-----------------------------\n         |          |         \n"
         self.assertEquals(self._board.display, b)
