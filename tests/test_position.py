@@ -28,7 +28,8 @@ class TestPosition(unittest.TestCase):
 
     def test_vacant(self):
         path = self._player.paths["0:2"]
-        position = path.position(0)
+        position = path.positions[0]
+        self.assertTrue(position.vacant)
 
 
 

@@ -6,9 +6,15 @@ class Board(object):
         self._rows = rows
         self._columns = columns
         self._players = []
+        self._positions = []
+        for i in (self.rows * self.columns):
+            self._positions.append(Position(Mask(i, 'int')))
 
     @property
     def rows(self): return self._rows
+
+    @property
+    def positions(self): return self._positions
 
     @property
     def columns(self): return self._columns
@@ -28,11 +34,11 @@ class Board(object):
     def display(self):
         b = "\n\n"
         i = 1
-        for position in list(self.state):
-            if position == "_":
+        for position in self.positions:
+            if position.owner == None:
                 b += " ".center(8)
             else:
-                b += position.center(8)
+                b += position.owner.token.center(8)
 
             if (i % self.rows):
                 b += " | "
@@ -45,17 +51,3 @@ class Board(object):
             i += 1
 
         return b
-
-    @property
-    def state(self):
-        state = list("_________")
-        for player in self._players:
-            for position in range(0,9):
-                if player.moves.bit(position) == 1:
-                    state[position] = str(player.token)
-
-        return "".join(state)
-
-
-    def vacant(self, position):
-        return list(self.state)[position] == "_"

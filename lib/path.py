@@ -60,7 +60,4 @@ class Path(object):
         return data
 
 
-
-
-
     #def winning_positions(self):
