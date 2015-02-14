@@ -25,15 +25,14 @@ class TestPlayer(unittest.TestCase):
 
     def test_moves(self):
         moves = self._player.moves
-        self.assertEqual(str(type(moves)), "<class 'mask.Mask'>")
-        self.assertEqual(moves.mask, '000')
+        self.assertEqual(len(self._player.moves), 0)
+        self._player.move_to(0)
+        self.assertEqual(len(self._player.moves), 1)
+        self._player.move_to(1)
+        self.assertEqual(len(self._player.moves), 2)
 
     def test_move_to(self):
-        self.assertEqual(self._player.moves.bit(0), 0)
-        self.assertTrue(self._player.move_to(0))
-        self.assertEqual(self._player.moves.bit(0), 1)
-        self.assertFalse(self._player.move_to(0))
-        self.assertEqual(self._player.moves.bit(0), 1)
+        self.assertEqual(len(self._player.moves), 0)
 
     def test_won(self):
         self.assertFalse(self._player.won)

@@ -3,12 +3,15 @@ from path import *
 class Player(object):
     def __init__(self):
         self._board = None
-        self._moves = Mask('000')
         self._token = None
 
     @property
     def moves(self):
-        return self._moves
+        moves = []
+        for position in self._board.positions:
+            if position.owner == self:
+                moves.append(position)
+        return moves
 
     @property
     def paths(self):
@@ -24,7 +27,11 @@ class Player(object):
                 }
 
     def move_to(self, position):
-        self.board.positions[position].owner = self
+        if self._board.positions[position].owner == None:
+            self._board.positions[position].owner = self
+            return True
+        else:
+            return False
 
     @property
     def token(self):

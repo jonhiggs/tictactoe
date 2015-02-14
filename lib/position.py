@@ -1,8 +1,9 @@
+from mask import *
 import pdb
 
 class Position(object):
-    def __init__(self, mask):
-        self._mask = mask
+    def __init__(self, position):
+        self._position = Mask(position, 'int')
         self._owner = None
         # TODO: raise error if position isn't part of the path.
 

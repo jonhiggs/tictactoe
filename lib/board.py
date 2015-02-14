@@ -9,7 +9,7 @@ class Board(object):
         self._players = []
         self._positions = []
         for i in range(0,(self.rows * self.columns)):
-            self._positions.append(Position(Mask(i, 'int')))
+            self._positions.append(Position(i))
 
     @property
     def rows(self): return self._rows
