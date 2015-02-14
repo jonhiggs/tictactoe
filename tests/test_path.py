@@ -22,9 +22,6 @@ class TestPath(unittest.TestCase):
         self._opponent.token = "O"
         self._board.add_player(self._opponent)
 
-    def test_mask(self):
-        self.assertEqual(self._player.paths["0:2"].mask.mask, "007")
-
     def test_board(self):
         self.assertIn(self._player, self._board._players)
         self.assertIn(self._opponent, self._board._players)
