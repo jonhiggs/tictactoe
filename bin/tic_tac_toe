@@ -1,34 +1,34 @@
 #!/usr/bin/env python
+import pdb
 import sys
 import os
 sys.path.append(
     os.path.realpath( os.path.dirname(__file__) + '/../lib/')
 )
 
-from game import *
+import game
 import human
 from random import shuffle
 
 print "\nWelcome to Tic Tac Toe! \n"
 
 tokens = [ "X", "O" ]
-board = Board()
 
 players = []
 for i in range(0,2):
-    player = human.Human()
-    player.token = tokens.pop()
-    players.append(player)
+    p = human.Human()
+    p.token = tokens.pop()
+    players.append(p)
 
-game = Game(players)
+this_game = game.Game(players)
 
-while not game.over:
-    print player.token
-    game.move
-    game.board
+while not this_game.over:
+    player = this_game.board._players.pop(0)
+    print "it's your turn player %s" % player.token
+    this_game.board._players.append(player)
+    player.move()
+    print this_game.board.display
 
     if player.won:
         print "congradulations %s, you won" % player.token
         break
-
-    game.next_player

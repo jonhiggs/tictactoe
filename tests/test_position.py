@@ -31,6 +31,9 @@ class TestPosition(unittest.TestCase):
         position = path.positions[0]
         self.assertTrue(position.vacant)
 
+    #def test_owner(self):
+
+
 
 
 if __name__ == '__main__':
