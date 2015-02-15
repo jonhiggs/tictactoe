@@ -6,6 +6,7 @@ sys.path.append(
 )
 
 from game import *
+import human
 from random import shuffle
 
 print "\nWelcome to Tic Tac Toe! \n"
@@ -15,7 +16,7 @@ board = Board()
 
 players = []
 for i in range(0,2):
-    player = Human()
+    player = human.Human()
     player.token = tokens.pop()
     players.append(player)
 

@@ -36,12 +36,7 @@ class TestPlayer(unittest.TestCase):
 
     def test_won(self):
         self.assertFalse(self._player.won)
-        self._player.move_to(0)
-        self.assertFalse(self._player.won)
-        self._player.move_to(1)
-        self._player.move_to(2)
-        self.assertTrue(self._player.won)
-        self._player.move_to(3)
+        for m in [ 0, 1, 2 ]: self._player.move_to(m)
         self.assertTrue(self._player.won)
 
     def test_board(self):

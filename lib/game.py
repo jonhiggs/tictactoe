@@ -19,33 +19,20 @@ class Game(object):
         return self._board._players
 
     @property
-    def player(self):
-        return self.players[0]
-
-    @property
-    def next_player(self):
-        player = self._board._players.pop(0)
-        self._board._players.append(player)
-        return player
-
-    @property
     def drawn(self):
-        if self.won:
-            return False
-        elif match(".*_.*", self._board.state):
-            return False
-        else:
-            return True
+        return not self.won and self.over
 
     @property
     def won(self):
         for player in self.players:
-            if player.won: return False
+            if player.won: return True
         return False
 
     @property
     def over(self):
-        return self.drawn or self.won
+        for position in self._board.positions:
+            if position.vacant: return False
+        return True
 
     @property
     def board(self):

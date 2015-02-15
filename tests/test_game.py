@@ -33,21 +33,20 @@ class TestGameTwoHumanPlayers(unittest.TestCase):
     def test_players(self):
         self.assertEquals(len(self._game.players), 2)
 
-    def test_next_player(self):
-        self.assertNotEqual(self._game.next_player, self._game.next_player)
-
     def test_game_drawn(self):
         self.assertFalse(self._game.drawn)
         for p in [ 1, 3, 4, 8 ]:
-            self._game.player.move_to(p)
+            self._game.players[0].move_to(p)
 
-        self._game.next_player
         for p in [ 0, 2, 5, 6, 7 ]:
-            self._game.player.move_to(p)
+            self._game.players[1].move_to(p)
 
         self.assertTrue(self._game.drawn)
 
-
+    def test_game_won(self):
+        for p in range(0,3):
+            self._game.players[0].move_to(p)
+        self.assertTrue(self._game.won)
 
 if __name__ == '__main__':
     unittest.main()
